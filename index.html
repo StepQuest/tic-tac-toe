@@ -5,8 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic-Tac-Toe</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="wrapper">
+        <p class="results">Tic-Tac-Toe</p>
+        <div class="gameboard">
+            <div class="line">
+                <div class="cell" line="0" cell="0"></div>
+                <div class="cell" line="0" cell="1"></div>
+                <div class="cell" line="0" cell="2"></div>
+            </div>
+            <div class="line">
+                <div class="cell" line="1" cell="0"></div>
+                <div class="cell" line="1" cell="1"></div>
+                <div class="cell" line="1" cell="2"></div>
+            </div>
+            <div class="line">
+                <div class="cell" line="2" cell="0"></div>
+                <div class="cell" line="2" cell="1"></div>
+                <div class="cell" line="2" cell="2"></div>
+            </div>
+        </div>
+        <button class="reset" onclick="game.resetGame()">Reset</button>
+    </div>
     <script src="js.js"></script>
 </body>
 </html>
