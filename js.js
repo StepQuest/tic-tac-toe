@@ -9,7 +9,7 @@
 
 // GAMEBOARD
 
-// document.querySelector('dialog').showModal();
+document.querySelector('dialog').showModal();
 
 let gameboard = (function() {
     let line1 = [0, 0, 0];
