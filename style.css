@@ -109,6 +109,7 @@ input {
     color: rgb(32, 56, 56);
     border: 2px solid rgb(32, 56, 56);
     border-radius: 5px;
+    outline: none;
 }
 
 input:focus {
