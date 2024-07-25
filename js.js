@@ -1,15 +1,18 @@
-// const Player = mark => {
-//     const Mark = mark;
 
-//     return {Mark};
-// }
+// PLAYERS' NAME
 
-// const playerX = Player('X');
-// const playerO = Player('O');
+const Player = name => {
+    const playerName = name[0].toUpperCase() + name.slice(1);
+    const getName = () => playerName;
+
+    return {getName};
+}
+
+let playerX;
+let playerO;
 
 // GAMEBOARD
 
-document.querySelector('dialog').showModal();
 
 let gameboard = (function() {
     let line1 = [0, 0, 0];
@@ -29,6 +32,24 @@ const game = (function() {
     let roundMarker = 'X';
     const cells = document.querySelectorAll('.cell');
     const results = document.querySelector('.results');
+    const dialog = document.querySelector('dialog');
+    dialog.showModal();
+    const playerXName = document.querySelector('#X');
+    const playerOName = document.querySelector('#O');
+    const startBtn = document.querySelector('.startBtn');
+
+
+    // LISTEN "START" BUTTON, SET OR NOT SET PLAYERS' NAME
+    
+    startBtn.addEventListener('click', () => {
+        if (playerXName.value != '' && playerOName.value != '') {
+            playerX = Player(playerXName.value);
+            playerO = Player(playerOName.value);
+        }
+        dialog.close();
+        dialog.style.display = 'none';
+    })
+
 
     // LISTEN CELLS
 
@@ -67,11 +88,35 @@ const game = (function() {
     const checkWinner = () => {
         for (let i = 0; i < 3; i++) {
             if (gameboard[i].every(element => element === gameboard[i][0] && gameboard[i][0] != 0)) {
-                results.innerHTML = `Three ${gameboard[i][0]} horizontally`;
+                if (playerX != undefined) {
+                    if (gameboard[i][0] === 'X') {
+                        results.innerHTML = `${playerX.getName()} got three ${gameboard[i][0]} horizontally`; 
+                    } else {
+                        results.innerHTML = `${playerO.getName()} got three ${gameboard[i][0]} horizontally`;
+                    }
+                } else {
+                    results.innerHTML = `Three ${gameboard[i][0]} horizontally`;
+                }
             } else if (gameboard.every(element => element[i] === gameboard[0][i] && gameboard[0][i] != 0)) {
-                results.innerHTML = `Three ${gameboard[0][i]} vertically`;
+                if (playerX != undefined) {
+                    if (gameboard[0][i] === 'X') {
+                        results.innerHTML = `${playerX.getName()} got three ${gameboard[0][i]} vertically`; 
+                    } else {
+                        results.innerHTML = `${playerO.getName()} got three ${gameboard[0][i]} vertically`;
+                    }
+                } else {
+                    results.innerHTML = `Three ${gameboard[0][i]} vertically`;
+                }
             } else if (gameboard[0][0] === gameboard[1][1] && gameboard[1][1] === gameboard[2][2] && gameboard[1][1] != 0 || gameboard[0][2] === gameboard[1][1] && gameboard[1][1] === gameboard[2][0] && gameboard[1][1] != 0) {
-                results.innerHTML = `Three ${gameboard[1][1]} diagonally`;
+                if (playerX != undefined) {
+                    if (gameboard[1][1] === 'X') {
+                        results.innerHTML = `${playerX.getName()} got three ${gameboard[1][1]} diagonally`; 
+                    } else {
+                        results.innerHTML = `${playerO.getName()} got three ${gameboard[1][1]} diagonally`;
+                    }
+                } else {
+                    results.innerHTML = `Three ${gameboard[1][1]} diagonally`;
+                }
             } else if (gameboard.every(line => line.every(cell => cell != 0))) {
                 results.innerHTML = `It's a Tie`;
             } 
