@@ -10,6 +10,8 @@ body {
     align-items: center;
     justify-content: center;
     font-family: Roboto;
+    background-color:palegoldenrod;
+    color: rgb(32, 56, 56);
 }
 
 .wrapper {
@@ -53,9 +55,41 @@ body {
 
 .reset {
     margin-top: 30px;
-    width: 70px;
-    height: 30px;
-    font-size: 100%;
+    width: 80px;
+    height: 40px;
+    font-size: 130%;
     padding: 5px;
     cursor: pointer;
+    background-color: #00000000;
+    font-weight:400;
+    color: rgb(32, 56, 56);
+    border: 2px solid rgb(32, 56, 56);
+    border-radius: 5px;
+}
+
+.reset:hover {
+    background-color:rgb(255, 249, 186);
+}
+
+.reset:active {
+    background-color: rgb(235, 230, 179);
+}
+
+::backdrop {
+    background-image: linear-gradient(
+      45deg,
+      rgb(0, 0, 0),
+      rgb(33, 33, 34),
+      rgb(78, 79, 80),
+      rgb(117, 126, 117)
+    );
+    opacity: 0.75;
+  }
+
+dialog {
+    padding: 30px;
+}
+
+dialog div{
+    padding: 10px;
 }
